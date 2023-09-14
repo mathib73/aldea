@@ -1,0 +1,55 @@
+.text {
+  font-family: 'Inter';
+  font-style: normal;
+  display: flex;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.menuButton {
+  color: black;
+}
+.title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+
+  margin-top: 78px;
+}
+.paragraph {  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000000;
+  background-color: #ECECEC;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: start;
+  margin-top: 12px;
+
+  white-space: pre-wrap;
+  padding-left: 30px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.greenButton {  
+  background: #8F9063;
+  height: 33px;
+  border-radius: 0px;
+}
+.greenButton:hover {
+  background: #8F9063;
+}
+.baseMargin {
+  margin-left: 116px;
+  margin-right: 116px;
+}

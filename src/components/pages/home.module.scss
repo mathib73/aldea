@@ -1,0 +1,34 @@
+
+.container {
+    height: 100%;
+}
+.gridContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/images/pinar-117.svg');
+    height: 100%;
+}
+.logoContainer {
+    background-color: transparent;
+}
+.subTitle {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    align-items: center;
+    text-align: center;
+}
+.input {
+    background: #FFFFFF;
+}
+.button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
