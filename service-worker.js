@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/aldea/precache-manifest.85e9053cf48420d43554bc359da23d19.js"
+  "/aldea/precache-manifest.288de9f347e9cc8449c8a952299f4568.js"
 );
 
 workbox.clientsClaim();
