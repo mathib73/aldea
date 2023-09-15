@@ -22,12 +22,9 @@ const PATH_PARAM_REGEX = /:[^/]+/gi;
 const determineRouteParams = (route) => {
   const newRoute = { ...route };
   const { path } = newRoute;
-  console.log('path: ', path);
   // Extract the names of the parameters
   const pathMatch = path.match(PATH_PARAM_REGEX) || [];
-  console.log('pathMatch: ', pathMatch);
   const pathParams = pathMatch.map((param) => param.slice(1));
-  console.log('pathParams: ', pathParams);
   newRoute.pathParams = pathParams || [];
   return newRoute;
 };

@@ -28,7 +28,7 @@ const renderRoutes = (routeData) => (
     <Route
       key={data.path}
       exact
-      path={data.path}
+      path={[process.env.PUBLIC_URL, data.path].join('')}
       element={<data.component />}
     />
   ))
