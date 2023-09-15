@@ -26,9 +26,10 @@ const zipRouteData = (routeData) => (
 const renderRoutes = (routeData) => (
   zipRouteData(routeData).map((data) => (
     <Route
+      basename={process.env.PUBLIC_URL}
       key={data.path}
       exact
-      path={[process.env.PUBLIC_URL, data.path].join('')}
+      path={data.path}
       element={<data.component />}
     />
   ))

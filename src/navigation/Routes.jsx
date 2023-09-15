@@ -51,6 +51,7 @@ const routes = [
     path: '*',
   },
 ].map(determineRouteParams);
+console.log(routes);
 
 export {
   determineRouteParams,
