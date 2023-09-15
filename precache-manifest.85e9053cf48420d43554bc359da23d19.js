@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "30dd7c53181564ba262b",
+    "revision": "2a8c113d505558533ca8",
     "url": "/aldea/static/css/main.f0da36b3.chunk.css"
   },
   {
-    "revision": "30dd7c53181564ba262b",
-    "url": "/aldea/static/js/main.e2742d70.chunk.js"
+    "revision": "2a8c113d505558533ca8",
+    "url": "/aldea/static/js/main.c5bfa144.chunk.js"
   },
   {
     "revision": "2267a73afca7ce8010b6",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/aldea/static/media/Inter-VariableFont_slnt,wght.ba8d1544.ttf"
   },
   {
-    "revision": "a3c6bcc0e5be0a53c6c724d3c968880d",
+    "revision": "abda2060c53af8a73dfd5a85dcdf3de8",
     "url": "/aldea/index.html"
   }
 ];
