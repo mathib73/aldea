@@ -17,6 +17,8 @@ import sketchImg from '../../assets/images/trash/sketch.jpg';
 import wideImg from '../../assets/images/trash/wide.jpg';
 
 const title = 'Personalización';
+const imageText = `Interactúa con el modelo para
+                  conocer la volumetría del proyecto.`;
 const data = {
   information: `Breve memoria del proyecto con realizada por el estudio de arquitectura.
                     Sería una descripción a nivel conceptual..
@@ -38,12 +40,15 @@ const continuar = () => {
 const Personalizacion = () => {
   const [step, setStep] = React.useState(0);
   const [imageClass, setImageClass] = React.useState(classes.imageBox);
+  const [textDivClass, setTextDivClass] = React.useState(classes.imageTextDiv);
 
   const toggleSize = () => {
     if (imageClass === classes.imageBox) {
       setImageClass(classes.imageBoxExpanded);
+      setTextDivClass(classes.imageTextDivExpanded);
     } else {
       setImageClass(classes.imageBox);
+      setTextDivClass(classes.imageTextDiv);
     }
   };
   return (
@@ -115,6 +120,11 @@ const Personalizacion = () => {
                   src={sketchImg}
                   className={imageClass}
                 />
+                <div className={textDivClass}>
+                  <Typography className={classes.imageText}>
+                    {imageText}
+                  </Typography>
+                </div>
                 <Button variant="contained" onClick={toggleSize} className={classes.expandButton}>
                   <img src={expand} alt="expand" />
                 </Button>

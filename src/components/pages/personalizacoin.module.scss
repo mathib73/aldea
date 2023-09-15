@@ -124,6 +124,39 @@
   margin: 0px;
   padding: 0px;
   position: relative;
-  bottom: 9%;
+  bottom: 16%;
   left: 92%;
+}
+.imageTextDiv {
+  transition: transform 1s;
+
+  background: rgba(0, 0, 0, 0.4);
+  width: 260px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  bottom: 81%;
+  left: 2%;
+}
+
+.imageTextDivExpanded {
+  @extend .imageTextDiv;
+  transition: transform 1s;
+  transform: translate(-216.6%, 0%);
+}
+.imageText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    white-space: pre-line;
+    text-align: start;
+  
+    color: #FFFFFF;
 }
