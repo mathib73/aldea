@@ -93,7 +93,7 @@ const renderRoutes = (routeData) => (
 const Router = (props) => {
   const { routeConfig } = props;
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ScrollToTop>
         <Routes>
           {renderRoutes(routeConfig)}
