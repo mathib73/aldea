@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Paper,
   Table, TableBody, TableCell,
@@ -7,24 +7,6 @@ import {
 } from '@mui/material';
 import classes from './listaTrabajos.module.scss';
 import { OptionListButton } from './optionListButton';
-
-// Harcoded table
-const trabajosGuardados = [
-  {
-    cliente: 'Bruno',
-    prototipo: 'Casa Tito 1',
-    fecha: '22-06-2023',
-    precioFinal: '70.000',
-    comentarios: 'Agregar precios barandas.',
-  },
-  {
-    cliente: 'Bruno 2',
-    prototipo: 'Casa Tito 2',
-    fecha: '25-06-2023',
-    precioFinal: '90.000',
-    comentarios: 'Agregar fotos.',
-  },
-];
 
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
@@ -60,8 +42,20 @@ const StyledTableRow = styled(TableRow)(() => ({
   },
 }));
 
-const ListaTrabajos = () => {
-  const navigate = useNavigate();
+const ListaTrabajos = (props) => {
+  const { trabajosGuardadosHardcoded, filterText } = props;
+  const [trabajosFiltrados, setTrabajosFiltrados] = React.useState(trabajosGuardadosHardcoded);
+  console.log('trabajosGuardadosHardcoded: ', trabajosGuardadosHardcoded);
+  React.useEffect(() => {
+    setTrabajosFiltrados(trabajosGuardadosHardcoded.filter((t) => {
+      if (t.cliente.includes(filterText)) return true;
+      if (t.fecha.includes(filterText)) return true;
+      if (t.precioFinal.includes(filterText)) return true;
+      if (t.prototipo.includes(filterText)) return true;
+      return false;
+    }));
+  }, [filterText]);
+  console.log('trabajosFiltrados: ', trabajosFiltrados);
   return (
     <div className={classes.listContainer}>
       <TableContainer component={Paper}>
@@ -77,18 +71,18 @@ const ListaTrabajos = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {[...Array(10)].map((x, i) => (
+            {trabajosFiltrados.map((t) => (
               <StyledTableRow
-                key={trabajosGuardados[i % 2].cliente}
+                key={t.cliente}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="left">
-                  {trabajosGuardados[i % 2].cliente}
+                  {t.cliente}
                 </TableCell>
-                <TableCell align="center">{trabajosGuardados[i % 2].prototipo}</TableCell>
-                <TableCell align="center">{trabajosGuardados[i % 2].fecha}</TableCell>
-                <TableCell align="center">{trabajosGuardados[i % 2].precioFinal}</TableCell>
-                <TableCell align="left">{trabajosGuardados[i % 2].comentarios}</TableCell>
+                <TableCell align="center">{t.prototipo}</TableCell>
+                <TableCell align="center">{t.fecha}</TableCell>
+                <TableCell align="center">{t.precioFinal}</TableCell>
+                <TableCell align="left">{t.comentarios}</TableCell>
                 <TableCell align="right">
                   <OptionListButton />
                 </TableCell>
@@ -99,6 +93,11 @@ const ListaTrabajos = () => {
       </TableContainer>
     </div>
   );
+};
+
+ListaTrabajos.propTypes = {
+  trabajosGuardadosHardcoded: PropTypes.object.isRequired,
+  filterText: PropTypes.string.isRequired,
 };
 
 export { ListaTrabajos };

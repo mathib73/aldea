@@ -45,6 +45,18 @@
   background: #8F9063;
   height: 33px;
   border-radius: 0px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+
+  text-transform: capitalize;
+  color: #FFFFFF;
 }
 .greenButton:hover {
   background: #8F9063;
@@ -52,4 +64,7 @@
 .baseMargin {
   margin-left: 116px;
   margin-right: 116px;
+}
+.scrolledDiv {
+  padding-right: 12px;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import classes from './stepper.module.scss';
 import { Typography } from '@mui/material';
+import classes from './stepper.module.scss';
 
 const getClassName = (currentStep, step) => {
   if (currentStep === step) return classes.current;
@@ -27,13 +27,13 @@ const data = [
     title: '4. Resultado',
     text: '',
   },
-]
+];
 
 const Stepper = (props) => {
   const { currentStep } = props;
   return (
     <ul className={classes.stepper}>
-      {data.map((s, step) =>(
+      {data.map((s, step) => (
         <li className={getClassName(currentStep, step)}>
           <Typography className={classes.title}>
             {s.title}

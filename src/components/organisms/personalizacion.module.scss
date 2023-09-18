@@ -11,41 +11,49 @@
   margin-top: 69px;
   width: min-content;
 }
+
 .innerGrid {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .leftGrid {
   height: 650px;
   background-color: #ECECEC;
   max-width: 547px;
   margin-top: 27px;
 }
+
 .rightGrid {
   display: flex;
   flex-direction: column;
   align-items: start;
 }
+
 .imageBox {
   transition: transform 1s;
   margin: 0 auto;
   max-height: 650px;
   max-width: 1101px;
 }
+
 .imageBoxExpanded {
   transition: transform 1s;
-  transform: scale(1.52, 1) translate(-16.6%, 0%);
+  transform: scale(1.53, 1.215) translate(-16.6%, -9%);
 }
+
 .imageBoxWide {
   max-height: 154px;
   max-width: 547px;
 }
+
 .div {
   display: flex;
   flex-direction: column;
   align-items: start;
 }
+
 .title {
   font-family: 'Inter';
   font-style: normal;
@@ -59,6 +67,7 @@
 
   margin-left: 21px;
 }
+
 .text {
   font-family: 'Inter';
   font-style: normal;
@@ -70,11 +79,13 @@
 
   color: #000000;
 }
+
 .list {
   display: flex;
   flex-direction: column;
   align-items: start;
 }
+
 .informationTextDiv {
   font-family: 'Inter';
   font-style: normal;
@@ -96,17 +107,20 @@
   padding: 12px;
   align-self: center;
 }
+
 .buttonLeftDiv {
   display: flex;
   align-self: end;
   margin-top: 10px;
   margin-right: 9px;
+
   & button {
     margin-left: 10px;
     width: 107px;
     height: 33px;
   }
 }
+
 .buttonRightDiv {
   display: flex;
   align-self: end;
@@ -118,6 +132,7 @@
     height: 22px;
   }
 }
+
 .expandButton {
   background: #8F9063;
   height: 50px;
@@ -127,6 +142,11 @@
   bottom: 16%;
   left: 92%;
 }
+
+.expandButton:hover {
+  background-color: #8F9063;
+}
+
 .imageTextDiv {
   transition: transform 1s;
 
@@ -145,18 +165,19 @@
 .imageTextDivExpanded {
   @extend .imageTextDiv;
   transition: transform 1s;
-  transform: translate(-216.6%, 0%);
+  transform: translate(-216.6%, -258%);
 }
+
 .imageText {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    display: flex;
-    align-items: center;
-    white-space: pre-line;
-    text-align: start;
-  
-    color: #FFFFFF;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  white-space: pre-line;
+  text-align: start;
+
+  color: #FFFFFF;
 }
