@@ -70,6 +70,7 @@ const Home = () => {
             className={classes.input}
             value={password}
             onChange={changePassword}
+            type="password"
           />
           {!loading
           && (
