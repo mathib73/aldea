@@ -19,7 +19,13 @@ const Home = () => {
   const login = () => {
     setLoading(true);
     /* conection with DB */
-    setTimeout(() => { setLoading(false); goToPage(routeNaming.PROTOTIPOS, navigate); }, 2000);
+    console.log(email)
+    console.log(password)
+    if (email === 'admin' && password === 'admin') {
+      setTimeout(() => { setLoading(false); goToPage(routeNaming.PROTOTIPOS, navigate); }, 2000);
+    } else {
+      setTimeout(() => { setLoading(false); setError(true); }, 2000);
+    }
   };
   const changeEmail = (event) => {
     setError(false);

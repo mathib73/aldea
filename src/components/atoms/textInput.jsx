@@ -4,7 +4,9 @@ import { TextField } from '@mui/material';
 import globalStyles from '../../assets/stylesheets/globalStyles.module.scss';
 
 const TextInput = (props) => {
-  const { label, className, error } = props;
+  const {
+    label, className, error, onChange,
+  } = props;
   return (
     <TextField
       error={error}
@@ -12,6 +14,7 @@ const TextInput = (props) => {
       className={[globalStyles.textField, className].join(' ')}
       variant="filled"
       fullWidth
+      onChange={onChange}
     />
   );
 };
@@ -20,6 +23,7 @@ TextInput.propTypes = {
   error: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
   className: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export { TextInput };

@@ -20,7 +20,7 @@ const TextContainer = (props) => {
         <Title title={title} className={classes.title} />
         {open
         && (
-          <Button variant="contained" onClick={abrirTrabajosGuardados} className={globalStyles.greenButton}>Abrir</Button>
+          <Button disabled variant="contained" onClick={abrirTrabajosGuardados} className={globalStyles.greenButton}>Abrir</Button>
         )}
       </div>
       {!!paragraph
