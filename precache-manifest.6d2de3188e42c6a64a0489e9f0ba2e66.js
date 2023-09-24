@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "/aldea/static/media/Inter-VariableFont_slnt,wght.ba8d1544.ttf"
   },
   {
-    "revision": "1b60535f2a76531bd7a3fab421f85826",
+    "revision": "2ab8f42f68d23bd00ac7d0622c17156c",
     "url": "/aldea/index.html"
   }
 ];
