@@ -1,0 +1,54 @@
+.leftResultRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.leftNumberDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.leftTitle {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 31px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+
+}
+
+.leftNumber {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 31px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: #000000;
+}
+
+.leftCurrency {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  color: #000000;
+
+  margin-right: 10px;
+}

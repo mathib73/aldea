@@ -17,6 +17,14 @@
   }
 }
 
+@media print {
+
+  .stepper,
+  .stepper * {
+    display: none !important;
+  }
+}
+
 .stepperItem {
   height: 101px;
   width: 434px;

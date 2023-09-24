@@ -3,7 +3,6 @@ import {
   Box, Grid,
 } from '@mui/material';
 import classes from './prototipos.module.scss';
-import globalStyles from '../../assets/stylesheets/globalStyles.module.scss';
 import { Navbar } from '../molecules/navbar';
 import { TextContainer } from '../molecules/textContainer';
 import { TablaTrabajosGuardados } from '../organisms/tablaTrabajosGuardados';

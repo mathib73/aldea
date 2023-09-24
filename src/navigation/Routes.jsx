@@ -2,7 +2,7 @@ const routeNaming = {
   HOME: 'home',
   PROTOTIPOS: 'prototipos',
   TRABAJOS: 'trabajos',
-  PERSONALIZACION: 'personalizacion',
+  STEPS: 'personalizacion',
 };
 
 const PATH_PARAM_REGEX = /:[^/]+/gi;
@@ -43,7 +43,7 @@ const routes = [
     path: '/trabajos',
   },
   {
-    name: routeNaming.PERSONALIZACION,
+    name: routeNaming.STEPS,
     path: '/personalizacion/:id',
   },
   {
@@ -51,7 +51,6 @@ const routes = [
     path: '*',
   },
 ].map(determineRouteParams);
-console.log(routes);
 
 export {
   determineRouteParams,

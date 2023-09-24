@@ -10,34 +10,20 @@ import classes from './personalizacion.module.scss';
 import globalStyles from '../../assets/stylesheets/globalStyles.module.scss';
 import expand from '../../assets/images/expand.png';
 
-// HARCODED DATA (DELETE)
-import sketchImg from '../../assets/images/trash/sketch.jpg';
-import plantaImage from '../../assets/images/trash/plantas.jpg';
-import wideImg from '../../assets/images/trash/wide.jpg';
-
-const imageText = `Interactúa con el modelo para
-                  conocer la volumetría del proyecto.`;
-const data = {
-  information: `Breve memoria del proyecto con realizada por el estudio de arquitectura.
-                    Sería una descripción a nivel conceptual..
-
-                    Breve memoria del proyecto con realizada por el estudio de arquitectura.
-                    Sería una descripción a nivel conceptual.
-
-                    Breve memoria del proyecto con realizada por el estudio de arquitectura.
-                    Sería una descripción a nivel conceptual.`,
-};
-
 const Personalizacion = (props) => {
-  const { continuar, anterior } = props;
+  const {
+    continuar,
+    anterior,
+    prototipo,
+  } = props;
   const [imageClass, setImageClass] = React.useState(classes.imageBox);
   const [textDivClass, setTextDivClass] = React.useState(classes.imageTextDiv);
-  const [actualImg, setActualImg] = React.useState(sketchImg);
+  const [actualImg, setActualImg] = React.useState(prototipo.data.sketchImg);
   const openPlantas = () => {
-    setActualImg(plantaImage);
+    setActualImg(prototipo.data.plantaImage);
   };
   const openSketch = () => {
-    setActualImg(sketchImg);
+    setActualImg(prototipo.data.sketchImg);
   };
   const toggleSize = () => {
     if (imageClass === classes.imageBox) {
@@ -58,21 +44,21 @@ const Personalizacion = (props) => {
           <Box
             component="img"
             alt="wide"
-            src={wideImg}
+            src={prototipo.data.wideImg}
             className={classes.imageBoxWide}
           />
           <Typography className={classes.title}>
-            La Casa Tito.
+            {prototipo.title}
           </Typography>
           <ul className={classes.list}>
-            <li>Terreno X1</li>
-            <li>120 m2 interiores</li>
-            <li>2 Dormitorios</li>
-            <li>2 baños</li>
+            <li>{prototipo.data.land}</li>
+            <li>{`${prototipo.data.m2Interiores} m2 interiores`}</li>
+            <li>{`${prototipo.data.dormitorios} Dormitorios`}</li>
+            <li>{`${prototipo.data.banos} baños`}</li>
           </ul>
           <div className={classes.informationTextDiv}>
             <Typography>
-              {data.information}
+              {prototipo.data.descripcionPrototipo}
             </Typography>
           </div>
           <div className={classes.buttonLeftDiv}>
@@ -91,10 +77,10 @@ const Personalizacion = (props) => {
             <Button variant="contained" onClick={openPlantas} className={globalStyles.greenButton}>
               Plantas
             </Button>
-            <Button variant="contained" onClick={console.log('asd')} className={globalStyles.greenButton}>
+            <Button variant="contained" onClick={() => console.log('asd')} className={globalStyles.greenButton}>
               Cortes
             </Button>
-            <Button variant="contained" onClick={console.log('asd')} className={globalStyles.greenButton}>
+            <Button variant="contained" onClick={() => console.log('asd')} className={globalStyles.greenButton}>
               Fachadas
             </Button>
             <Button variant="contained" onClick={openSketch} className={globalStyles.greenButton}>
@@ -109,7 +95,7 @@ const Personalizacion = (props) => {
           />
           <div className={textDivClass}>
             <Typography className={classes.imageText}>
-              {imageText}
+              {prototipo.data.imageText}
             </Typography>
           </div>
           <Button variant="contained" onClick={toggleSize} className={classes.expandButton}>
@@ -124,6 +110,29 @@ const Personalizacion = (props) => {
 Personalizacion.propTypes = {
   continuar: PropTypes.func.isRequired,
   anterior: PropTypes.func.isRequired,
+  prototipo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ProyectoDe: PropTypes.string.isRequired,
+    data: {
+      land: PropTypes.string.isRequired,
+      m2: PropTypes.number.isRequired,
+      m2Interiores: PropTypes.number.isRequired,
+      m2Exteriores: PropTypes.number.isRequired,
+      dormitorios: PropTypes.number.isRequired,
+      banos: PropTypes.number.isRequired,
+      usdEstándar: PropTypes.number.isRequired,
+      plazoEstándar: PropTypes.string.isRequired,
+      usdMovimientoTierrasEstándar: PropTypes.number.isRequired,
+      uasImpuestosEstándar: PropTypes.number.isRequired,
+      descripciónPrototipo: PropTypes.string.isRequired,
+      imageText: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
+      sketchImg: PropTypes.object.isRequired,
+      plantaImage: PropTypes.object.isRequired,
+      wideImg: PropTypes.object.isRequired,
+    },
+  }).isRequired,
 };
 
 export { Personalizacion };

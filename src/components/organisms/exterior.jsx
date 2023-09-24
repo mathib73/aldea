@@ -10,56 +10,26 @@ import classes from './exterior.module.scss';
 import globalStyles from '../../assets/stylesheets/globalStyles.module.scss';
 import expand from '../../assets/images/expand.png';
 
-// HARCODED DATA (DELETE)
-import maderaRojo from '../../assets/images/trash/madera-rojo.png';
-import maderaOtro from '../../assets/images/trash/madera-otro.png';
-import imgMuestra from '../../assets/images/trash/imgMuestra.png';
 import { ExteriorRow } from '../molecules/exteriorRow';
 
-const exteriorRows = [
-  {
-    id: 1,
-    title: 'Otro tipo de Madera.',
-    desc: 'Revestimiento de chapa metálica acanalada vertical u horizontal.',
-    img: maderaOtro,
-    imgMuestra,
-  },
-  {
-    id: 2,
-    title: 'Madera pintada de rojo.',
-    desc: 'Tablas de madera pintadas de rojo.',
-    img: maderaRojo,
-    imgMuestra,
-  },
-  {
-    id: 3,
-    title: 'Otro tipo de Madera.',
-    desc: 'Revestimiento de chapa metálica acanalada vertical u horizontal.',
-    img: maderaOtro,
-    imgMuestra,
-  },
-  {
-    id: 4,
-    title: 'Madera pintada de rojo.',
-    desc: 'Tablas de madera pintadas de rojo.',
-    img: maderaRojo,
-    imgMuestra,
-  },
-  {
-    id: 5,
-    title: 'Otro tipo de Madera.',
-    desc: 'Revestimiento de chapa metálica acanalada vertical u horizontal.',
-    img: maderaOtro,
-    imgMuestra,
-  },
-];
-
 const Exterior = (props) => {
-  const { continuar, anterior } = props;
+  const {
+    continuar, anterior, rubros, prototipo,
+    resultStructure, setResultStructure,
+  } = props;
   const [imageClass, setImageClass] = React.useState(classes.imageBox);
-  const [actualImg, setActualImg] = React.useState(maderaOtro);
-  const changeImage = (img) => {
+  const [actualImg, setActualImg] = React.useState(rubros[0].img);
+  const [selectedId, setSelectedId] = React.useState(rubros[0].id);
+  const setExternal = (img, externalId) => {
+    const newResultStructure = resultStructure;
+    const selectedRubro = rubros.filter((r) => r.id === externalId)[0];
+    newResultStructure.rubroExterno.id = selectedRubro.id;
+    newResultStructure.rubroExterno.title = selectedRubro.title;
+    newResultStructure.rubroExterno.cost = selectedRubro.cost;
+    newResultStructure.rubroExterno.desc = selectedRubro.desc;
+    setResultStructure(newResultStructure);
     setActualImg(img);
+    setSelectedId(externalId);
   };
   const toggleSize = () => {
     if (imageClass === classes.imageBox) {
@@ -68,6 +38,7 @@ const Exterior = (props) => {
       setImageClass(classes.imageBox);
     }
   };
+
   return (
     <Grid
       className={classes.innerGrid}
@@ -76,7 +47,7 @@ const Exterior = (props) => {
       <Grid className={classes.leftGrid} xs={4}>
         <div className={classes.div}>
           <Typography className={classes.title}>
-            La Casa Tito.
+            {prototipo.title}
           </Typography>
           <Typography className={classes.subTitle}>
             El exterior de la casa
@@ -84,13 +55,14 @@ const Exterior = (props) => {
           <Typography className={classes.text}>
             Definición del revestimiento exterior de la casa.
           </Typography>
-          {exteriorRows.map((e) => (
+          {rubros.map((e) => (
             <ExteriorRow
-              img={e.img}
               title={e.title}
               desc={e.desc}
               imgMuestra={e.imgMuestra}
-              changeImage={changeImage}
+              setExternal={() => setExternal(e.img, e.id)}
+              id={e.id}
+              selectedId={selectedId}
             />
           ))}
           <div className={classes.buttonLeftDiv}>
@@ -123,6 +95,34 @@ const Exterior = (props) => {
 Exterior.propTypes = {
   continuar: PropTypes.func.isRequired,
   anterior: PropTypes.func.isRequired,
+  rubros: PropTypes.array.isRequired,
+  resultStructure: PropTypes.object.isRequired,
+  setResultStructure: PropTypes.func.isRequired,
+  prototipo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ProyectoDe: PropTypes.string.isRequired,
+    data: {
+      land: PropTypes.string.isRequired,
+      m2: PropTypes.number.isRequired,
+      m2Interiores: PropTypes.number.isRequired,
+      m2Exteriores: PropTypes.number.isRequired,
+      dormitorios: PropTypes.number.isRequired,
+      banos: PropTypes.number.isRequired,
+      usdEstandar: PropTypes.number.isRequired,
+      plazoEstandar: PropTypes.string.isRequired,
+      usdMovimientoTierrasEstandar: PropTypes.number.isRequired,
+      usdImpuestosEstandar: PropTypes.number.isRequired,
+      usdConstruccion: PropTypes.number.isRequired,
+      descripcionPrototipo: PropTypes.string.isRequired,
+      imageText: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
+      sketchImg: PropTypes.object.isRequired,
+      plantaImage: PropTypes.object.isRequired,
+      wideImg: PropTypes.object.isRequired,
+    },
+    grupoDeAreas: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 export { Exterior };

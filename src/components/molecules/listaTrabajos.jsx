@@ -45,7 +45,6 @@ const StyledTableRow = styled(TableRow)(() => ({
 const ListaTrabajos = (props) => {
   const { trabajosGuardadosHardcoded, filterText } = props;
   const [trabajosFiltrados, setTrabajosFiltrados] = React.useState(trabajosGuardadosHardcoded);
-  console.log('trabajosGuardadosHardcoded: ', trabajosGuardadosHardcoded);
   React.useEffect(() => {
     setTrabajosFiltrados(trabajosGuardadosHardcoded.filter((t) => {
       if (t.cliente.includes(filterText)) return true;
@@ -55,7 +54,6 @@ const ListaTrabajos = (props) => {
       return false;
     }));
   }, [filterText]);
-  console.log('trabajosFiltrados: ', trabajosFiltrados);
   return (
     <div className={classes.listContainer}>
       <TableContainer component={Paper}>

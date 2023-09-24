@@ -16,6 +16,9 @@
   background-color: #AAAAAA;
   cursor: default;
 }
+.button:focus {
+  background-color: #8F9063;
+}
 .img {
   width: 57px;
   height: 57px;
@@ -47,4 +50,29 @@
 }
 .textDiv {
   margin-left: 9px;
+}
+.selectedDiv {
+  width: 104px;
+  height: 21px;
+  color: black;
+  
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: #FFFFFF;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 64px;
+  left: 387px;
+  display: flex;
+  justify-content: center;
+}
+.selectedText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+  
+    color: #8F9063;
 }

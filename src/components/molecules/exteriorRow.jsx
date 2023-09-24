@@ -7,12 +7,12 @@ import classes from './exteriorRow.module.scss';
 
 const ExteriorRow = (props) => {
   const {
-    title, desc, img,
-    changeImage, imgMuestra,
+    title, desc, selectedId, id,
+    setExternal, imgMuestra,
   } = props;
 
   return (
-    <Button className={classes.button} onClick={() => changeImage(img)}>
+    <Button className={classes.button} onClick={setExternal} autoFocus={selectedId === id}>
       <img src={imgMuestra} alt={title} className={classes.img} />
       <div className={classes.textDiv}>
         <Typography className={classes.title}>
@@ -21,6 +21,14 @@ const ExteriorRow = (props) => {
         <Typography className={classes.desc}>
           {desc}
         </Typography>
+        {selectedId === id
+        && (
+          <div className={classes.selectedDiv}>
+            <Typography className={classes.selectedText}>
+              Seleccionada
+            </Typography>
+          </div>
+        )}
       </div>
     </Button>
   );
@@ -29,9 +37,10 @@ const ExteriorRow = (props) => {
 ExteriorRow.propTypes = {
   title: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  img: PropTypes.any.isRequired,
   imgMuestra: PropTypes.any.isRequired,
-  changeImage: PropTypes.func.isRequired,
+  setExternal: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  selectedId: PropTypes.number.isRequired,
 };
 
 export { ExteriorRow };

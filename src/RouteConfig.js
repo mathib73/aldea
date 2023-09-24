@@ -18,7 +18,7 @@ const RouteConfig = [
     component: Trabajos,
   },
   {
-    name: routeNaming.PERSONALIZACION,
+    name: routeNaming.STEPS,
     component: Steps,
   },
 ];

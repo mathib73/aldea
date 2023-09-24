@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Box,
   Button,
   Grid,
   Typography,
@@ -8,15 +7,16 @@ import {
 import PropTypes from 'prop-types';
 import classes from './interior.module.scss';
 import globalStyles from '../../assets/stylesheets/globalStyles.module.scss';
-import { ExteriorRow } from '../molecules/exteriorRow';
 
-// HARCODED DATA (DELETE)
-import { rubros } from '../../assets/trashData/rubros';
 import { InteriorLeftRow } from '../molecules/interiorLeftRow';
 import { SubRubro } from '../molecules/subRubro';
 
 const Interior = (props) => {
-  const { anterior, continuar } = props;
+  const {
+    anterior, continuar,
+    rubros, prototipo,
+    resultStructure, setResultStructure,
+  } = props;
   const [rubroActual, setRubroActual] = React.useState(rubros[0]);
 
   const changeRubro = (rubroId) => {
@@ -31,7 +31,7 @@ const Interior = (props) => {
       <Grid className={classes.leftGrid} xs={4}>
         <div className={classes.leftDiv}>
           <Typography className={classes.title}>
-            Casa Tito
+            {prototipo.title}
           </Typography>
           <Typography className={classes.subTitle}>
             El interior de la casa
@@ -56,7 +56,11 @@ const Interior = (props) => {
         <div className={classes.separator} />
       </Grid>
       <Grid className={classes.rightGrid} xs={8}>
-        <SubRubro rubro={rubroActual} />
+        <SubRubro
+          rubro={rubroActual}
+          resultStructure={resultStructure}
+          setResultStructure={setResultStructure}
+        />
       </Grid>
       <div className={classes.buttonLeftDiv}>
         <Button variant="contained" onClick={anterior} className={globalStyles.greenButton}>
@@ -73,6 +77,32 @@ const Interior = (props) => {
 Interior.propTypes = {
   continuar: PropTypes.func.isRequired,
   anterior: PropTypes.func.isRequired,
+  prototipo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ProyectoDe: PropTypes.string.isRequired,
+    data: {
+      land: PropTypes.string.isRequired,
+      m2: PropTypes.number.isRequired,
+      m2Interiores: PropTypes.number.isRequired,
+      m2Exteriores: PropTypes.number.isRequired,
+      dormitorios: PropTypes.number.isRequired,
+      banos: PropTypes.number.isRequired,
+      usdEstandar: PropTypes.number.isRequired,
+      plazoEstandar: PropTypes.string.isRequired,
+      usdMovimientoTierrasEstandar: PropTypes.number.isRequired,
+      uasImpuestosEstandar: PropTypes.number.isRequired,
+      descripcionPrototipo: PropTypes.string.isRequired,
+      imageText: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
+      sketchImg: PropTypes.object.isRequired,
+      plantaImage: PropTypes.object.isRequired,
+      wideImg: PropTypes.object.isRequired,
+    },
+  }).isRequired,
+  resultStructure: PropTypes.object.isRequired,
+  setResultStructure: PropTypes.func.isRequired,
+  rubros: PropTypes.array.isRequired,
 };
 
 export { Interior };

@@ -12,38 +12,38 @@ import { goToPage, routeNaming } from '../../navigation';
 
 const CardSlider = (props) => {
   const {
-    id, image, title, data,
+    prototipo,
   } = props;
   const navigate = useNavigate();
-  const goToPersonalizacion = () => {
-    goToPage(routeNaming.PERSONALIZACION, navigate, { id });
+  const goToSteps = () => {
+    goToPage(routeNaming.STEPS, navigate, { id: prototipo.id });
   };
   return (
     <Card className={classes.card}>
-      <CardActionArea onClick={goToPersonalizacion}>
+      <CardActionArea onClick={goToSteps}>
         <CardMedia
           component="img"
-          image={image}
+          image={prototipo.data.image}
         />
         <CardContent className={classes.cardContent}>
           <Typography gutterBottom className={classes.cardTitle} component="div">
-            {title}
+            {prototipo.title}
           </Typography>
           <div className={classes.dataDiv}>
             <ul className={classes.list}>
               <li>
                 <Typography className={classes.cardData}>
-                  {data.land}
+                  {prototipo.data.land}
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.cardData}>
-                  {`${data.m2} m2 interiores`}
+                  {`${prototipo.data.m2Interiores} m2 interiores`}
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.cardData}>
-                  {`${data.bedrooms} dormitorios`}
+                  {`${prototipo.data.dormitorios} dormitorios`}
                 </Typography>
               </li>
             </ul>
@@ -58,10 +58,29 @@ const CardSlider = (props) => {
 };
 
 CardSlider.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
-  image: PropTypes.object.isRequired,
+  prototipo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    ProyectoDe: PropTypes.string.isRequired,
+    data: {
+      land: PropTypes.string.isRequired,
+      m2: PropTypes.number.isRequired,
+      m2Interiores: PropTypes.number.isRequired,
+      m2Exteriores: PropTypes.number.isRequired,
+      dormitorios: PropTypes.number.isRequired,
+      banos: PropTypes.number.isRequired,
+      usdEstándar: PropTypes.number.isRequired,
+      plazoEstándar: PropTypes.string.isRequired,
+      usdMovimientoTierrasEstándar: PropTypes.number.isRequired,
+      uasImpuestosEstándar: PropTypes.number.isRequired,
+      descripciónPrototipo: PropTypes.string.isRequired,
+      imageText: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired,
+      sketchImg: PropTypes.object.isRequired,
+      plantaImage: PropTypes.object.isRequired,
+      wideImg: PropTypes.object.isRequired,
+    },
+  }).isRequired,
 };
 
 export { CardSlider };

@@ -6,18 +6,23 @@ import classes from './interiorLeftRow.module.scss';
 
 const InteriorLeftRow = (props) => {
   const {
-    selectedId, idRubro,
+    selectedId, idRubro, customClass,
     title, changeRubro, listNumber,
+    isResult, open,
   } = props;
 
-  const buttonClass = (selectedId !== idRubro)
+  let buttonClass = (selectedId !== idRubro)
     ? classes.nonSelectedButton
     : classes.selectedButton;
-  const textClass = selectedId !== idRubro
+  let textClass = selectedId !== idRubro
     ? classes.nonSelectedText
     : classes.selectedText;
+  if (isResult) {
+    buttonClass = open ? classes.selectedButton : classes.nonSelectedButton;
+    textClass = open ? classes.selectedText : classes.nonSelectedText;
+  }
   return (
-    <Button className={buttonClass} onClick={() => changeRubro(idRubro)}>
+    <Button className={[buttonClass, customClass].join(' ')} onClick={() => changeRubro(idRubro)}>
       <Typography className={textClass}>
         {`${listNumber}. ${title}`}
       </Typography>
@@ -25,12 +30,20 @@ const InteriorLeftRow = (props) => {
   );
 };
 
+InteriorLeftRow.defaultProps = {
+  customClass: '',
+  isResult: false,
+  open: false,
+};
 InteriorLeftRow.propTypes = {
   title: PropTypes.string.isRequired,
   idRubro: PropTypes.string.isRequired,
   selectedId: PropTypes.string.isRequired,
   changeRubro: PropTypes.func.isRequired,
   listNumber: PropTypes.string.isRequired,
+  customClass: PropTypes.string,
+  isResult: PropTypes.bool,
+  open: PropTypes.bool,
 };
 
 export { InteriorLeftRow };
