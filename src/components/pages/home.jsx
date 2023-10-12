@@ -19,8 +19,6 @@ const Home = () => {
   const login = () => {
     setLoading(true);
     /* conection with DB */
-    console.log(email)
-    console.log(password)
     if (email === 'admin' && password === 'admin') {
       setTimeout(() => { setLoading(false); goToPage(routeNaming.PROTOTIPOS, navigate); }, 2000);
     } else {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,8 +9,10 @@ import { NavbarButton } from '../atoms/navbarButton';
 import navbarLogo from '../../assets/images/navbar-logo.svg';
 import classes from './navbar.module.scss';
 import { goToPage, routeNaming } from '../../navigation';
+import { Menu } from '@mui/material';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { setOpen } = props;
   const navigate = useNavigate();
   return (
     <Box>
@@ -18,11 +21,15 @@ const Navbar = () => {
           <Button onClick={() => goToPage(routeNaming.PROTOTIPOS, navigate)}>
             <img src={navbarLogo} alt="Logo Aldea" />
           </Button>
-          <NavbarButton className={' '} />
+          <NavbarButton className={' '} setOpen={setOpen} />
         </Toolbar>
       </AppBar>
     </Box>
   );
+};
+
+Navbar.propTypes = {
+  setOpen: PropTypes.func.isRequired,
 };
 
 export { Navbar };

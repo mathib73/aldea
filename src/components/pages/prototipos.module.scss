@@ -12,3 +12,9 @@
   width: min-content;
   padding-bottom: 15px;
 }
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

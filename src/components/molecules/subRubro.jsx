@@ -12,7 +12,9 @@ const SubRubro = (props) => {
     rubro, resultStructure, setResultStructure,
   } = props;
   const changeStructure = (selectedRubro, subRubro, optionId) => {
-    const selectedOption = subRubro.opciones.find((option) => option.id === optionId);
+    const selectedOption = subRubro.opciones.find(
+      (option) => option.id.toString() === optionId.toString(),
+    );
     const newResultStructure = { ...resultStructure };
     // creo el subrubor a agregar/cambiar
     const newSubRubro = {
@@ -69,14 +71,19 @@ const SubRubro = (props) => {
         {rubro.title}
       </Typography>
       <Box className={classes.box}>
-        {rubro.subRubros.map((subRubro) => (
-          <SubRubroFormGroup
-            rubro={rubro}
-            subRubro={subRubro}
-            changeStructure={changeStructure}
-            resultStructure={resultStructure}
-          />
-        ))}
+        {rubro.subRubros.map((subRubro) => {
+          if (subRubro.opciones.length) {
+            return (
+              <SubRubroFormGroup
+                rubro={rubro}
+                subRubro={subRubro}
+                changeStructure={changeStructure}
+                resultStructure={resultStructure}
+              />
+            );
+          }
+          return null;
+        })}
       </Box>
     </Grid>
   );
