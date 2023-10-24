@@ -5,7 +5,7 @@ const sendExcel = async (excel) => {
   data.append('excel', excel);
   const config = {
     method: 'post',
-    url: process.env.REACT_APP_API_URL,
+    url: `${process.env.REACT_APP_API_URL}/excel`,
     headers: {
       'Content-Type': 'multipart/form-data',
     },
