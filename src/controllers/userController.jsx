@@ -1,5 +1,5 @@
 import { BaseController } from './baseController';
-import { API_ROUTES } from '../../networking/apiRoutes';
+import { API_ROUTES } from '../networking/apiRoutes';
 
 class UserController extends BaseController {
   static async login(email, password) {
