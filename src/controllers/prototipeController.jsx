@@ -67,7 +67,7 @@ const transformRubrosInteriores = (rubro) => ({
 const getPrototipos = async () => {
   const config = {
     method: 'get',
-    url: 'http://localhost:8080/api/prototipos',
+    url: `${process.env.REACT_APP_API_URL}/prototipos`,
   };
 
   const res = await axios(config);
@@ -79,7 +79,7 @@ const getPrototipos = async () => {
 const getPrototipo = async (id) => {
   const config = {
     method: 'get',
-    url: `http://localhost:8080/api/prototipos/${id}`,
+    url: `${process.env.REACT_APP_API_URL}/prototipos/${id}`,
   };
 
   const res = await axios(config);
